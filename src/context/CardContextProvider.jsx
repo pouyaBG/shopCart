@@ -39,6 +39,8 @@ const cardReducer = (state, action) => {
         total: 0,
         checkout: false
       };
+    default:
+      return state
 
   }
 
