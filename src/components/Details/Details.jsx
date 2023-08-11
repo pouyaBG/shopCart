@@ -1,25 +1,23 @@
 import { useParams, Link } from 'react-router-dom';
-import { useQuery } from 'react-query';
 import { useData } from '../../context/DataContext';
-
+import styles from "./D.module.css"
 const Details = () => {
 
   const data = useData();
   const { id } = useParams();
   const product = data[id - 1];
-  
+  console.log(data[id]);
+
   return (
-    <div>
-      <div>
-        <img src={product.image} alt="product" />
-        <div>
-          <h3>{product.title}</h3>
-          <p>{product.description}</p>
-          <p><span>Category:</span> {product.category}</p>
-          <div>
-            <span>{product.price} $</span>
-            <Link to="/">Back to Shop</Link>
-          </div>
+    <div className={styles.container}>
+      <img className={styles.image} src={product.image} alt="product" />
+      <div className={styles.textContainer}>
+        <h3>{product.title}</h3>
+        <p className={styles.description}>{product.description}</p>
+        <p className={styles.category}><span>Category:</span> {product.category}</p>
+        <div className={styles.buttonContainer}>
+          <span className={styles.price}>{product.price}$</span>
+          <Link to="/">Back to Shop</Link>
         </div>
       </div>
     </div>

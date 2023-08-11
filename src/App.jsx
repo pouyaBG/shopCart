@@ -3,6 +3,7 @@ import Navbar from './components/Navbar/Navbar';
 import { Outlet } from 'react-router-dom';
 import { DataProvider } from './context/DataContext';
 import { useQuery } from 'react-query';
+import CardContextProvider from './context/CardContextProvider';
 
 function App() {
   const fetchData = async () => {
@@ -15,8 +16,10 @@ function App() {
   return (
     <div>
       <DataProvider data={data}>
-        <Navbar />
-        <Outlet />
+        <CardContextProvider>
+          <Navbar />
+          <Outlet />
+        </CardContextProvider>
       </DataProvider>
     </div>
   );
