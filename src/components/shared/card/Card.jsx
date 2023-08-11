@@ -10,57 +10,58 @@ function Card({ image, title, price, id }) {
   const { state, dispatch } = useContext(CardContext);
   const data = useData();
   return (
-    <div className="">
+    <div className={styles.container}>
       <img
-        className={styles.image}
+        className={styles.cardImage}
         src={image}
         alt="product"
         style={{ width: "200px" }}
       />
-      <div className={styles.textContainer}>
-        <h3 className={styles.textContainer}>{shorten(title)}</h3>
-        <p>{price}</p>
-        <div>
-          <Link to={`/details/${id}`}>
-            <p>Details</p>
-          </Link>
-          <div>
-            {isInCart(state, id) ? (
-              <button
-                onClick={() =>
-                  dispatch({ type: "INCREASE_ITEM", payload: data[id - 1] })
-                }
-              >
-                +
-              </button>
-            ) : (
-              <button
-                onClick={() =>
-                  dispatch({ type: "ADD_ITEM", payload: data[id - 1] })
-                }
-              >
-                Add To Cart
-              </button>
-            )}
-            {countQuantity(state, id) > 1 && (
-              <button
-                onClick={() =>
-                  dispatch({ type: "DECREASE_ITEM", payload: data[id - 1] })
-                }
-              >
-                -
-              </button>
-            )}
-            {countQuantity(state, id) === 1 && (
-              <button
-                onClick={() =>
-                  dispatch({ type: "REMOVE_ITEM", payload: data[id - 1] })
-                }
-              >
-                <img src={trash} />
-              </button>
-            )}
-          </div>
+      <h3 className={styles.textContainer}>{shorten(title)}</h3>
+      <p>{price}</p>
+      <div className={styles.linkContainer}>
+        <Link to={`/details/${id}`}>
+          <p>Details</p>
+        </Link>
+        <div className={styles.buttonContainer}>
+          {isInCart(state, id) ? (
+            <button
+              className={styles.smallButton}
+              onClick={() =>
+                dispatch({ type: "INCREASE_ITEM", payload: data[id - 1] })
+              }
+            >
+              +
+            </button>
+          ) : (
+            <button
+              onClick={() =>
+                dispatch({ type: "ADD_ITEM", payload: data[id - 1] })
+              }
+            >
+              Add To Cart
+            </button>
+          )}
+          {countQuantity(state, id) > 1 && (
+            <button
+              className={styles.smallButton}
+              onClick={() =>
+                dispatch({ type: "DECREASE_ITEM", payload: data[id - 1] })
+              }
+            >
+              -
+            </button>
+          )}
+          {countQuantity(state, id) === 1 && (
+            <button
+              className={styles.smallButton}
+              onClick={() =>
+                dispatch({ type: "REMOVE_ITEM", payload: data[id - 1] })
+              }
+            >
+              <img src={trash} />
+            </button>
+          )}
         </div>
       </div>
     </div>
