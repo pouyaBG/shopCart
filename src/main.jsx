@@ -18,7 +18,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
           <Route path="/" element={<App />}>
             <Route path="details/:id" element={<Details />} />
             <Route index element={<Products />} />
-            <Route path="/shpoCart" element={<ShopCart />} />
+            <Route path="/shpocart" element={<ShopCart />} />
           </Route>
         </Routes>
       </Router>

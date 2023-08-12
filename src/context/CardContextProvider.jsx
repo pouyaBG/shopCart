@@ -27,6 +27,7 @@ const cardReducer = (state, action) => {
         ...state,
         selectedItems: [...state.selectedItems],
         ...sumItems(state.selectedItems),
+        checkout: false,
       };
     case "REMOVE_ITEM":
       const newSelectedItems = state.selectedItems.filter(
