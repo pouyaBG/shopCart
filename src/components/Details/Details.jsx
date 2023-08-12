@@ -6,7 +6,6 @@ const Details = () => {
   const data = useData();
   const { id } = useParams();
   const product = data[id - 1];
-  console.log(data[id]);
 
   return (
     <div className={styles.container}>

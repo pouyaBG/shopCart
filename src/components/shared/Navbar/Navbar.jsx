@@ -6,7 +6,6 @@ import { Link } from "react-router-dom";
 import { CardContext } from "../../../context/CardContextProvider";
 function Navbar() {
   const { state } = useContext(CardContext);
-  console.log(state);
   return (
     <nav className="navbar">
       <ul className="nav-links">

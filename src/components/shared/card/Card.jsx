@@ -23,6 +23,11 @@ function Card({ image, title, price, id }) {
         <Link to={`/details/${id}`}>
           <p>Details</p>
         </Link>
+        {countQuantity(state, id) > 0 && (
+          <span className={styles.counter}>
+            {countQuantity(state, id)}
+          </span>
+        )}
         <div className={styles.buttonContainer}>
           {isInCart(state, id) ? (
             <button
