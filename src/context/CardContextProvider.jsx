@@ -6,6 +6,16 @@ const initialState = {
   total: 0,
   checkout: false,
 };
+const sumItems = (items) => {
+  const itemsCounter = items.reduce((total, item) => {
+    return total + item.quantity;
+  }, 0);
+  const totalItems = items
+    .reduce((total, item) => total + item.price * item.quantity, 0)
+    .toFixed(2);
+
+  return { itemsCounter, totalItems };
+};
 
 const cardReducer = (state, action) => {
   switch (action.type) {
@@ -13,7 +23,11 @@ const cardReducer = (state, action) => {
       if (!state.selectedItems.find((item) => item.id === action.payload.id)) {
         state.selectedItems.push({ ...action.payload, quantity: 1 });
       }
-      return { ...state, selectedItems: [...state.selectedItems] };
+      return {
+        ...state,
+        selectedItems: [...state.selectedItems],
+        ...sumItems(state.selectedItems),
+      };
     case "REMOVE_ITEM":
       const newSelectedItems = state.selectedItems.filter(
         (item) => item.id !== action.payload.id
@@ -33,6 +47,7 @@ const cardReducer = (state, action) => {
         return {
           ...state,
           selectedItems: updatedSelectedItems,
+          ...sumItems(state.selectedItems),
         };
       }
       return { ...state };
@@ -50,6 +65,7 @@ const cardReducer = (state, action) => {
         return {
           ...state,
           selectedItems: updatedSelectedItems,
+          ...sumItems(state.selectedItems),
         };
       }
       return { ...state };

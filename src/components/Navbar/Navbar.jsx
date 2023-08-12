@@ -1,23 +1,23 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./Navbar.css";
+import { CardContext } from "../../context/CardContextProvider";
+import Shop from "../../assets/shop.svg";
+import Product from '../../assets/product.svg'
 function Navbar() {
+  const { state } = useContext(CardContext);
+  console.log(state);
   return (
     <nav className="navbar">
-      <div className="logo">My Shop</div>
       <ul className="nav-links">
         <li>
-          <a href="#">Home</a>
-        </li>
-        <li>
-          <a href="#">Products</a>
-        </li>
-        <li>
-          <a href="#">About</a>
-        </li>
-        <li>
-          <a href="#">Contact</a>
+          <img className="imageProduct" src={Product} alt="logo" />
+          <a href="/">Products</a>
         </li>
       </ul>
+      <div className="logo">
+        <img src={Shop} alt="logo" />
+        <span>{state.itemsCounter}</span>
+      </div>
     </nav>
   );
 }

@@ -1,5 +1,9 @@
 .navbar {
   display: flex;
+  position: fixed;
+  width: 100%;
+  left: 0;
+  top: 0;
   justify-content: space-between;
   align-items: center;
   padding: 1rem;
@@ -10,6 +14,7 @@
 .logo {
   font-size: 1.5rem;
   font-weight: bold;
+  margin-right: 50px;
 }
 
 .nav-links {
@@ -21,9 +26,14 @@
 .nav-links a {
   text-decoration: none;
   color: #fff;
+  font-size: 1.5rem;
   transition: color 0.3s ease;
 }
 
 .nav-links a:hover {
-  color: #fca311; /* Change to your desired hover color */
+  color: #fca311;
+}
+
+.imageProduct {
+  margin-right: 10px;
 }
