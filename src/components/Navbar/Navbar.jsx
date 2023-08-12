@@ -2,7 +2,8 @@ import React, { useContext } from "react";
 import "./Navbar.css";
 import { CardContext } from "../../context/CardContextProvider";
 import Shop from "../../assets/shop.svg";
-import Product from '../../assets/product.svg'
+import Product from "../../assets/product.svg";
+import { Link } from "react-router-dom";
 function Navbar() {
   const { state } = useContext(CardContext);
   console.log(state);
@@ -15,7 +16,9 @@ function Navbar() {
         </li>
       </ul>
       <div className="logo">
-        <img src={Shop} alt="logo" />
+        <Link to={"/shopCart"}>
+          <img src={Shop} alt="logo" />
+        </Link>
         <span>{state.itemsCounter}</span>
       </div>
     </nav>

@@ -32,7 +32,14 @@ const cardReducer = (state, action) => {
       const newSelectedItems = state.selectedItems.filter(
         (item) => item.id !== action.payload.id
       );
-      return { ...state, selectedItems: newSelectedItems };
+      const { itemsCounter, totalItems } = sumItems(newSelectedItems);
+
+      return {
+        ...state,
+        selectedItems: newSelectedItems,
+        itemsCounter,
+        totalItems,
+      };
 
     case "INCREASE_ITEM":
       const indexI = state.selectedItems.findIndex(
